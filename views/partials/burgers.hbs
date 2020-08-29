@@ -1,0 +1,18 @@
+<div class="burgers">
+    <div class="row">
+        {{#each burgers as |burger key|}}
+            <div class="col-md-3">
+                <div class="card">
+                    <span class="star">
+                        <span class="star-icon fa fa-star"></span>
+                      </span>
+                    <img class="card-img-top" src="/images/burgers/bacon-cheddar-burger.png" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold text-white">{{burger.name}}</h5>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+

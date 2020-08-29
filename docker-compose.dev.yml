@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  app:
+    container_name: app_dev_container
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    networks:
+      - app_net
+    ports:
+      - 3000:${APP_PORT}
+    volumes:
+      - .:/var/www/app
+    depends_on:
+      - mysql
+  mysql:
+    container_name: mysql_dev_container
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=${PASSWORD}
+      - MYSQL_DATABASE=${DATABASE}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3306:${MYSQL_PORT}
+    networks:
+      - app_net
+  nginx:
+    container_name: nginx_dev_container
+    build: ./nginx
+    networks:
+      - app_net
+    ports:
+      - 80:80
+    depends_on:
+      - app
+
+volumes:
+  mysql_data:
+
+networks:
+  app_net:
+

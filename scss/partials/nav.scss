@@ -1,0 +1,13 @@
+.nav-header {
+  .nav-tabs {
+    .nav-item {
+      .nav-link {
+        color: white;
+      }
+      .nav-link.active  {
+        background-color: $light-dark;
+        border-color: $light-dark;
+      }
+    }
+  }
+}
